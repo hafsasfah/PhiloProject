@@ -11,9 +11,10 @@ public class QuotesDB {
 	
 	Connection connection;
 
-	public QuotesDB() {		
+	public QuotesDB() {
+		// Create a database named PhiloProject before creating tables
 		try {
-			String url = "jdbc:postgresql://localhost/PhiloProject";
+			String url = "jdbc:postgresql://localhost/PhiloProject"; // Database name
 			String username = "postgres";
 			String password = "password";
 				
