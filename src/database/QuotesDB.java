@@ -90,7 +90,7 @@ public class QuotesDB {
 		}
 	}
 
-	public boolean delete(aGame game) { // will not implement
+	public boolean delete(game) { // will not implement
 		return false;
 	}
 
