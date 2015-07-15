@@ -1,6 +1,10 @@
 package database;
 import java.sql.*;
 
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import models.Quotes;
 
 public class QuotesDB {
@@ -9,7 +13,7 @@ public class QuotesDB {
 
 	public QuotesDB() {		
 		try {
-			String url = "jdbc:postgresql://localhost/PhiloProj";
+			String url = "jdbc:postgresql://localhost/PhiloProject";
 			String username = "postgres";
 			String password = "password";
 				
