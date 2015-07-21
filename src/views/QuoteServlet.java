@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Quotes;
 import database.*;
 
 public class QuoteServlet extends HttpServlet {
@@ -19,7 +20,8 @@ public class QuoteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		StockOwnedTable stockOwnedTable = new StockOwnedTable();
+		
+		Quotes quotes = new Quotes();
             	
     	response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -116,7 +118,7 @@ public class QuoteServlet extends HttpServlet {
 	
 	public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
-		StockOwnedTable stockOwnedTable = new StockOwnedTable();
+		Quotes stockOwnedTable = new StockOwnedTable();
     	
     	response.setContentType("text/plain");
         PrintWriter out = response.getWriter();
