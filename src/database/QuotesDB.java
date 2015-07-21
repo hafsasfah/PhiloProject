@@ -38,12 +38,12 @@ public class QuotesDB {
 		}
 	}
 	
-	public boolean createQuote(Quotes quote) {
+	public boolean createQuote(String quote, String authorName) {
 		try {
 			Statement statement = connection.createStatement();
 			String createQuoteRow = String.format
 					("INSERT INTO \"Quotes\" (\"AuthorName\", \"Quote\") VALUES ('%s', '%s');", 
-							quote.getQuote(), quote.getAuthorName());
+							authorName, quote);
 			statement.execute(createQuoteRow);
 			return true;
 		}
@@ -53,7 +53,7 @@ public class QuotesDB {
 		}
 	}
 
-	public int getQuote(Quotes authorName) { // add random logic
+	public int getQuote(String authorName) { // add random logic
 		try {
 			Statement statement = connection.createStatement();
 			String query = String.format("SELECT \"Quote\" FROM \"Quotes\" ORDER BY RANDOM() LIMIT 1;");
