@@ -122,15 +122,13 @@ public class QuoteServlet extends HttpServlet {
         }*/
     }
 	
-<<<<<<< HEAD
 	public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		/*StockOwnedTable stockOwnedTable = new StockOwnedTable();
-=======
+
 	public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
 		Quotes stockOwnedTable = new StockOwnedTable();
->>>>>>> origin/master
-    	
+
     	response.setContentType("text/plain");
         PrintWriter out = response.getWriter();
         

@@ -78,7 +78,7 @@ public class QuotesDB {
 		}
 	}
 
-	public boolean delete(game) { // will not implement
+	public boolean delete(String quote) { // will not implement
 		return false;
 	}
 
