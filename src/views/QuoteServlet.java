@@ -64,9 +64,8 @@ public class QuoteServlet extends HttpServlet {
     }
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-    	    throws IOException, ServletException
-    {
-		StockOwnedTable stockOwnedTable = new StockOwnedTable();
+    	    throws IOException, ServletException {
+		QuotesDB quotesDB = new QuotesDB();
     	
     	response.setContentType("text/plain");
         PrintWriter out = response.getWriter();
@@ -74,10 +73,9 @@ public class QuoteServlet extends HttpServlet {
         
         Map<String, String[]> parameterMap = request.getParameterMap();
         
-        if ( parameterMap.containsKey("Ticker") && parameterMap.containsKey("UserName")  && parameterMap.containsKey("Shares") )
-        {
+        if (parameterMap.containsKey("AuthorName") && parameterMap.containsKey("Quote")) {
         	UserTable userTable = new UserTable();
-        	User user = userTable.getSingleUser( parameterMap.get("UserName")[0] );
+        	User user = userTable.getSingleUser(parameterMap.get("UserName")[0]);
         	
         	StockPricesTable stockPricesTable = new StockPricesTable();
         	

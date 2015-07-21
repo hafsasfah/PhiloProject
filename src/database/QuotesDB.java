@@ -28,10 +28,10 @@ public class QuotesDB {
 	public void buildQuotesTable() {
 		try {
 			Statement statement = connection.createStatement();
-			String insertsql = "CREATE TABLE \"Quotes\" (\"ID\" serial NOT NULL,\"AuthorName\" character varying(50), "
+			String buildTable = "CREATE TABLE \"Quotes\" (\"ID\" serial NOT NULL,\"AuthorName\" character varying(50), "
 					+ "\"Quote\" character varying, CONSTRAINT \"PK\" PRIMARY KEY (\"ID\")) "
 					+ "WITH ( OIDS=FALSE ); ALTER TABLE \"Quotes\" OWNER TO postgres;";
-			statement.execute(insertsql);
+			statement.execute(buildTable);
 		}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -41,10 +41,10 @@ public class QuotesDB {
 	public boolean createQuote(Quotes quote) {
 		try {
 			Statement statement = connection.createStatement();
-			String createGameRow = String.format
+			String createQuoteRow = String.format
 					("INSERT INTO \"Quotes\" (\"AuthorName\", \"Quote\") VALUES ('%s', '%s');", 
-							quote.getQuote(), quote.getAuthor());
-			statement.execute(createGameRow);
+							quote.getQuote(), quote.getAuthorName());
+			statement.execute(createQuoteRow);
 			return true;
 		}
 		catch (SQLException e) {
@@ -53,23 +53,11 @@ public class QuotesDB {
 		}
 	}
 
-	public int getQuote() { // add random logic
+	public int getQuote(Quotes authorName) { // add random logic
 		try {
 			Statement statement = connection.createStatement();
-			String query = String.format("SELECT \"ID\" FROM \"Quotes\" WHERE \"Name\" = '%s';", name);
-			ResultSet results = statement.executeQuery(query);
-			
-			while (results.next()) {
-				int gameID = results.getInt(1);
-				String gameName = results.getString(2);
-				aPlayers currentPlayer = playerRepo.get(results.getInt(3));
-				
-				Game savedGame = new Game(gameID, gameName);		
-				
-				return gameID;
-			}
-			
-			
+			String query = String.format("SELECT \"Quote\" FROM \"Quotes\" ORDER BY RANDOM() LIMIT 1;");
+			ResultSet results = statement.executeQuery(query);		
 		}
 		catch (SQLException e) {
 			e.printStackTrace();

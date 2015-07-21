@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 public class Quotes {
 	String quote;
-	String author;
+	String authorName;
 	TreeMap<String, String> entry = new TreeMap();
 	
 	/*
@@ -42,11 +42,11 @@ public class Quotes {
 		this.quote = quote;
 	}
 	
-	public String getAuthor() {
-		return author;
+	public String getAuthorName() {
+		return authorName;
 	}
 	
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorName(String author) {
+		this.authorName = author;
 	}
 }
