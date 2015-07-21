@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import database.*;
 
@@ -65,9 +66,14 @@ public class QuoteServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
     	    throws IOException, ServletException {
+		
 		QuotesDB quotesDB = new QuotesDB();
+		String authorName = JOptionPane.showInputDialog("Enter the author's name:");
+    	String quote = JOptionPane.showInputDialog("Enter the author's name:");
+
+		quotesDB.createQuote(quote, authorName);
     	
-    	response.setContentType("text/plain");
+    	/*response.setContentType("text/plain");
         PrintWriter out = response.getWriter();
         
         
@@ -111,12 +117,11 @@ public class QuoteServlet extends HttpServlet {
         else
         {
         	out.println("You have to have a Ticker and UserName and Shares parameter!");
-        }
+        }*/
     }
 	
-	public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
-		StockOwnedTable stockOwnedTable = new StockOwnedTable();
+	public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		/*StockOwnedTable stockOwnedTable = new StockOwnedTable();
     	
     	response.setContentType("text/plain");
         PrintWriter out = response.getWriter();
@@ -144,15 +149,14 @@ public class QuoteServlet extends HttpServlet {
         	}
         	
         	else {
-        		out.println( "You must provide a UserName, Ticker and Shares!");
+        		out.println("You must provide a UserName, Ticker and Shares!");
         	}
         		
         	
         }
-        catch ( Exception e )
-        {
-        	out.println( "Couldn't real input stream request params" );
-        }
+        catch (Exception e) {
+        	out.println("Couldn't real input stream request params");
+        }*/
         
     }
 	
